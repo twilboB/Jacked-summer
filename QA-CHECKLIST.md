@@ -78,3 +78,14 @@ Legend: ☐ = to verify.
 
 ## 8. Persistence
 - ☐ Force-quit and relaunch: all logged data (lifts, kettlebell, food, weight, settings) persists.
+
+## 9. Siri / App Intents
+Build & run once so App Shortcuts register, then verify (voice or the Shortcuts app):
+- ☐ All six shortcuts appear under the app in the **Shortcuts** app.
+- ☐ "Log my weight in Jacked by Summer" → prompts for kg → today's weight is set/updated (one per day); appears in the Body tab.
+- ☐ "Log a kettlebell session in Jacked by Summer" → pick a day → today logged (one per day); streak/dot strip update in the Bells tab.
+- ☐ "Log food in Jacked by Summer" → describe a meal → on-device estimate logged; appears in the Food tab. On a non-AI device it fails with a clear "open the app" message.
+- ☐ "Log calories in Jacked by Summer" → quick manual add works without AI.
+- ☐ "How many calories do I have left in Jacked by Summer" → spoken total, remaining to TDEE, and remaining to the cut line.
+- ☐ "What's my streak in Jacked by Summer" → spoken current + best streak.
+- ☐ Data logged via Siri while the app is **closed** shows up when the app is next opened (shared store).
