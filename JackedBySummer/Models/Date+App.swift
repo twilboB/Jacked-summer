@@ -39,20 +39,20 @@ enum AppFormat {
         return "\(total / 60):" + String(format: "%02d", total % 60)
     }
 
-    static let mediumDate: DateFormatter = {
+    nonisolated(unsafe) static let mediumDate: DateFormatter = {
         let f = DateFormatter()
         f.dateStyle = .medium
         f.timeStyle = .none
         return f
     }()
 
-    static let shortDate: DateFormatter = {
+    nonisolated(unsafe) static let shortDate: DateFormatter = {
         let f = DateFormatter()
         f.dateFormat = "EEE d MMM"
         return f
     }()
 
-    static let weekdayInitial: DateFormatter = {
+    nonisolated(unsafe) static let weekdayInitial: DateFormatter = {
         let f = DateFormatter()
         f.dateFormat = "EEEEE" // single-letter weekday
         return f

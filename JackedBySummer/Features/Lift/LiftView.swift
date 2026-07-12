@@ -205,6 +205,7 @@ private struct WeekSelector: View {
                     Text("Week \(currentWeek)")
                         .font(.stat(30))
                         .contentTransition(.numericText())
+                        .accessibilityIdentifier("lift.weekLabel")
                         .accessibilityLabel("Week \(currentWeek)")
 
                     Spacer()
@@ -226,6 +227,7 @@ private struct WeekSelector: View {
                 }
                 .buttonStyle(.glassProminent) // VERIFY: Liquid Glass prominent button style
                 .tint(Palette.molten)
+                .accessibilityIdentifier("lift.startWeek")
                 .disabled(!atHighest)
             }
         }

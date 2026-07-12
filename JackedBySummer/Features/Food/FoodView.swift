@@ -436,13 +436,16 @@ private struct AddFoodCard: View {
             Text("Or log manually").font(.caption).foregroundStyle(.secondary)
             TextField("Name (optional)", text: $manualName)
                 .textFieldStyle(.roundedBorder)
+                .accessibilityIdentifier("food.name")
             HStack {
                 TextField("kcal", text: $manualKcal)
                     .keyboardType(.numberPad)
                     .textFieldStyle(.roundedBorder)
+                    .accessibilityIdentifier("food.kcal")
                 TextField("protein g", text: $manualProtein)
                     .keyboardType(.numberPad)
                     .textFieldStyle(.roundedBorder)
+                    .accessibilityIdentifier("food.protein")
             }
             Button {
                 logManual()
@@ -450,6 +453,7 @@ private struct AddFoodCard: View {
                 Label("Log", systemImage: "plus.circle.fill")
             }
             .buttonStyle(.glass)
+            .accessibilityIdentifier("food.logManual")
             .disabled(!manualHasSomething)
         }
     }
@@ -666,11 +670,8 @@ private struct FoodRow: View {
         }
         .padding(.vertical, 8)
         .padding(.horizontal, 8)
-        .swipeActions(edge: .trailing) {
-            Button(role: .destructive, action: onDelete) {
-                Label("Delete", systemImage: "trash")
-            }
-        }
+        // Deletion is via the inline trash button above. (A .swipeActions modifier
+        // here would be inert: these rows live in a VStack, not a List.)
     }
 }
 

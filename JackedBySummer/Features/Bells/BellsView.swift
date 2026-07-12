@@ -144,6 +144,7 @@ private struct StreakHero: View {
                         .font(.stat(64))
                         .foregroundStyle(.primary)
                         .contentTransition(.numericText())
+                        .accessibilityIdentifier("bells.currentStreak")
                     Text(currentStreak == 1 ? "day streak" : "days streak")
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
@@ -159,6 +160,7 @@ private struct StreakHero: View {
             }
             .accessibilityElement(children: .combine)
             .accessibilityLabel("Current streak \(currentStreak) days. Best \(longestStreak). \(sessions) sessions.")
+            .accessibilityIdentifier("bells.streakHero")
         }
     }
 }
@@ -316,6 +318,7 @@ private struct DayCard: View {
         }
         .buttonStyle(.glassProminent) // VERIFY: iOS 27 prominent glass button style name
         .tint(Palette.molten)
+        .accessibilityIdentifier("bells.log.\(day.id)")
     }
 
     /// Parse the benchmark inputs into a stored value for this day's benchmark.

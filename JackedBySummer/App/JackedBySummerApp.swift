@@ -9,13 +9,17 @@ struct JackedBySummerApp: App {
     let container: ModelContainer
 
     init() {
+        // UI tests pass `-uiTestingResetState YES` to start from a clean,
+        // in-memory store so assertions are deterministic and don't touch real data.
+        let uiTesting = ProcessInfo.processInfo.arguments.contains("-uiTestingResetState")
         do {
             container = try ModelContainer(
                 for: GymSetRecord.self,
                 KbLogRecord.self,
                 FoodEntryRecord.self,
                 WeightEntryRecord.self,
-                AppSettings.self
+                AppSettings.self,
+                configurations: ModelConfiguration(isStoredInMemoryOnly: uiTesting)
             )
         } catch {
             fatalError("Failed to create ModelContainer: \(error)")

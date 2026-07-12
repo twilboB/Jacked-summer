@@ -184,6 +184,7 @@ private struct CurrentWeightCard: View {
                         Text(AppFormat.kg(c))
                             .font(.stat(52))
                             .contentTransition(.numericText())
+                            .accessibilityIdentifier("body.currentWeight")
                         Text("kg")
                             .font(.statSmall(20))
                             .foregroundStyle(.secondary)
@@ -265,6 +266,7 @@ private struct LogWeightCard: View {
                         .focused($focused)
                         .font(.stat(28))
                         .textFieldStyle(.plain)
+                        .accessibilityIdentifier("body.weightField")
                     Text("kg")
                         .font(.statSmall(18))
                         .foregroundStyle(.secondary)
@@ -283,6 +285,7 @@ private struct LogWeightCard: View {
                 }
                 .buttonStyle(.glassProminent) // VERIFY: iOS 27 prominent glass button style
                 .tint(Palette.molten)
+                .accessibilityIdentifier("body.logWeight")
                 .disabled((parsed ?? 0) <= 0)
 
                 Text("Weigh in first thing after the bathroom. Trust the trend, not the day.")

@@ -21,11 +21,11 @@ enum Palette {
     static let inkTertiary = Color(hex: 0x5E564A)
 
     /// Molten gradient for prominent fills (progress bars, flame).
-    static let moltenGradient = LinearGradient(
-        colors: [molten, moltenSoft],
-        startPoint: .top,
-        endPoint: .bottom
-    )
+    /// Computed (not a stored static) so it needs no Sendable guarantees under
+    /// Swift 6 strict concurrency; gradients are cheap value types.
+    static var moltenGradient: LinearGradient {
+        LinearGradient(colors: [molten, moltenSoft], startPoint: .top, endPoint: .bottom)
+    }
 }
 
 extension Color {

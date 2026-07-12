@@ -43,6 +43,15 @@ Open `JackedBySummer.xcodeproj` in Xcode 26 (or later) with the iOS 27 SDK and r
 
 > **Verify the AI API names.** Apple shifts Foundation Models and Liquid Glass API shapes between releases. Every spot that leans on an unconfirmed iOS 27 symbol is flagged with a `// VERIFY:` comment — search the project for those and reconcile against the installed SDK. If the on-device model is unavailable, the AI buttons hide themselves and manual entry keeps working.
 
+## Testing
+
+- **Unit / integration tests** — `JackedBySummerTests/`: forecast, streaks, content/model sanity, and SwiftData persistence (incl. the one-per-day upsert).
+- **End-to-end UI tests** — `JackedBySummerUITests/`: launch, tab navigation, log a lift, log a kettlebell session (+ streak), add a manual food entry, log bodyweight.
+- **Setup** — the test targets need to be added once in Xcode; see [`Tests/SETUP.md`](Tests/SETUP.md). Then run `./scripts/test.sh` (or ⌘U). `./scripts/run.sh` just builds and launches the app in a simulator.
+- **Manual QA** — [`QA-CHECKLIST.md`](QA-CHECKLIST.md) covers what needs a human eye (AI output quality, Liquid Glass appearance, accessibility toggles, offline behaviour).
+- **What's been verified so far** — see [`VERIFICATION.md`](VERIFICATION.md). The deterministic core was cross-checked against an executed reference implementation (`Tests/reference/verify_core.py`); a static review fixed a Swift 6 concurrency blocker before first build.
+
 ## Requirements
 
 - An Apple-Intelligence-capable device for the AI features (checked at runtime via `SystemLanguageModel.default.availability`; the app degrades gracefully when it's not).
+- A Mac with **Xcode 26+ / iOS 27 SDK** to build, run, and test — the app cannot be built off macOS.
